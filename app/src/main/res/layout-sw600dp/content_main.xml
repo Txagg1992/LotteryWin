@@ -38,7 +38,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
@@ -50,9 +50,8 @@
 
         <TextView
             android:id="@+id/text_view_ball_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="01"
@@ -63,9 +62,8 @@
 
         <TextView
             android:id="@+id/text_view_ball_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="02"
@@ -75,9 +73,8 @@
             android:textSize="58sp" />
         <TextView
             android:id="@+id/text_view_ball_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="03"
@@ -87,9 +84,8 @@
             android:textSize="58sp" />
         <TextView
             android:id="@+id/text_view_ball_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="04"
@@ -99,9 +95,8 @@
             android:textSize="58sp" />
         <TextView
             android:id="@+id/text_view_ball_5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="05"
@@ -114,9 +109,8 @@
 
         <TextView
             android:id="@+id/text_view_mega_ball_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/mega_ball"
             android:padding="18dp"
             android:text="21"
@@ -128,7 +122,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
@@ -140,9 +134,8 @@
 
         <TextView
             android:id="@+id/text_view_ball_11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="01"
@@ -153,9 +146,8 @@
 
         <TextView
             android:id="@+id/text_view_ball_12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="02"
@@ -166,9 +158,8 @@
 
         <TextView
             android:id="@+id/text_view_ball_13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="03"
@@ -179,9 +170,8 @@
 
         <TextView
             android:id="@+id/text_view_ball_14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="04"
@@ -192,9 +182,8 @@
 
         <TextView
             android:id="@+id/text_view_ball_15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/regular_ball"
             android:padding="18dp"
             android:text="05"
@@ -206,9 +195,8 @@
 
         <TextView
             android:id="@+id/text_view_mega_ball_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:background="@drawable/mega_ball"
             android:padding="18dp"
             android:text="22"
@@ -221,22 +209,40 @@
 
     <Button
         android:id="@+id/buttonGetNumbers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="179dp"
+        android:layout_height="79dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_draw"
+        android:freezesText="true"
         android:padding="12dp"
         android:text="@string/get_numbers"
-        android:freezesText="true"
         android:textColor="#e6ffe5"
-        android:textSize="48sp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGetPreviousNumbers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.329" />
+
+    <Button
+        android:id="@+id/buttonGetPreviousNumbers"
+        android:layout_width="179dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/button_draw"
+        android:freezesText="true"
+        android:padding="12dp"
+        android:text="@string/get_old_numbers"
+        android:textColor="#e6ffe5"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.352" />
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3" />
+
 </android.support.constraint.ConstraintLayout>
