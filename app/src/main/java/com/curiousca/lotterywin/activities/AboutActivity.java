@@ -1,4 +1,4 @@
-package com.curiousca.lotterywin;
+package com.curiousca.lotterywin.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.curiousca.lotterywin.R;
 
 public class AboutActivity extends AppCompatActivity {
 

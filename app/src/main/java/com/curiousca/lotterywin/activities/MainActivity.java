@@ -1,4 +1,4 @@
-package com.curiousca.lotterywin;
+package com.curiousca.lotterywin.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.curiousca.lotterywin.R;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private int megaBall;
 
     private Button btnGetNumbers;
+    private Button btnGetPastNumbers;
 
     private String[] lotteryNumbers = {
             "01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeViews();
+        buttonClicks();
         if (savedInstanceState == null) {
             generateRandomNumbers();
             generateAdditionalRandomNumbers();
@@ -59,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
             megaBall = savedInstanceState.getInt(KEY_BALL_MEGA_1);
             textViewMegaBall_1.setText(String.valueOf(megaBall));
-
         }
+    }
 
-
+    private void buttonClicks(){
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +81,16 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Clicked", "Button clicked");
                 generateRandomNumbers();
                 generateAdditionalRandomNumbers();
+            }
+        });
+
+        btnGetPastNumbers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("Clicked 2", "Past button clicked");
+                Intent intent = new Intent(MainActivity.this, PastNumberActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -126,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
         textViewMegaBall_2 = findViewById(R.id.text_view_mega_ball_2);
 
         btnGetNumbers = findViewById(R.id.buttonGetNumbers);
+        btnGetPastNumbers = findViewById(R.id.buttonGetOldNumbers);
 
     }
 

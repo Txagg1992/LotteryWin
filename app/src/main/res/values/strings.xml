@@ -11,4 +11,5 @@
     <string name="phone_number">903.372.0127</string>
     <string name="created">Created By Enoch for android</string>
     <string name="get_old_numbers">Get Past Numbers</string>
+    <string name="title_activity_past_number">Past Numbers</string>
 </resources>
