@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -72,6 +73,9 @@ public class PastNumberActivity extends AppCompatActivity {
                                 String drawDate = pNumber.getString("draw_date");
 
                                 mPowerItems.add(new PowerItem(winningNumbers, drawDate));
+
+                                Log.d("PastNumberActivity", pNumber.getString("draw_date"));
+                                Log.d("PastNumberActivity", winningNumbers);
                             }
                             mPowerAdapter = new PowerAdapter(PastNumberActivity.this, mPowerItems);
                             pRecyclerView.setAdapter(mPowerAdapter);

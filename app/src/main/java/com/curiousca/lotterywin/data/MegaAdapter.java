@@ -3,6 +3,7 @@ package com.curiousca.lotterywin.data;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,10 @@ import android.widget.TextView;
 import com.curiousca.lotterywin.R;
 import com.curiousca.lotterywin.model.MegaItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MegaAdapter extends RecyclerView.Adapter<MegaAdapter.MegaViewHolder> {
 
@@ -41,9 +45,20 @@ public class MegaAdapter extends RecyclerView.Adapter<MegaAdapter.MegaViewHolder
         String mega  = currentItem.getmMega();
         String drawDate = currentItem.getmDrawDate();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = sdf.parse(drawDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String newDate = new SimpleDateFormat("MMM dd, YYYY").format(date);
+
         holder.mTextViewNumbers.setText(numbers);
         holder.mTextViewMegaPower.setText(mega);
-        holder.mTextViewDrawDate.setText("Draw Date: " + drawDate);
+        holder.mTextViewDrawDate.setText("Draw Date: " + newDate);
+
+        Log.i("megaAdapter", "Draw Date: " + newDate);
 
     }
 

@@ -11,7 +11,10 @@ import android.widget.TextView;
 import com.curiousca.lotterywin.R;
 import com.curiousca.lotterywin.model.PowerItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PowerAdapter extends RecyclerView.Adapter<PowerAdapter.PowerViewHolder> {
 
@@ -40,8 +43,18 @@ public class PowerAdapter extends RecyclerView.Adapter<PowerAdapter.PowerViewHol
         String numbers  = currentItem.getpNumbers();
         String drawDate = currentItem.getpDrawDate();
 
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Date date = null;
+        try {
+            date = sdf.parse(drawDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String newDate = new SimpleDateFormat("MMM dd, YYYY").format(date);
+
         holder.mTextViewNumbers.setText(numbers);
-        holder.mTextViewDrawDate.setText("Draw Date: " + drawDate);
+        holder.mTextViewDrawDate.setText("Draw Date: " + newDate);
 
     }
 
@@ -62,4 +75,17 @@ public class PowerAdapter extends RecyclerView.Adapter<PowerAdapter.PowerViewHol
             mTextViewDrawDate = itemView.findViewById(R.id.textViewDrawDate);
         }
     }
+//
+//    public static String convert(String originalTime) {
+//        LocalDate localDate;
+//
+//        if (originalTime.contains("T")) {
+//            localDate = OffsetDateTime.
+//            localDate = OffsetDateTime.parse(originalTime).toLocalDate();
+//        } else {
+//            localDate = LocalDate.parse(originalTime);
+//        }
+//
+//        return localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+//    }
 }
