@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnGetNumbers;
     private Button btnGetPastNumbers;
 
+
     private String[] lotteryNumbers = {
             "01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.i("Clicked 2", "Past button clicked");
                 Intent intent = new Intent(MainActivity.this, PastNumberActivity.class);
+                //progressDialog.cancel();
                 startActivity(intent);
 
             }

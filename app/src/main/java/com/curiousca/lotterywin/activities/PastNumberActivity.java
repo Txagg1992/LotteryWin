@@ -1,10 +1,10 @@
 package com.curiousca.lotterywin.activities;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,10 +38,15 @@ public class PastNumberActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
     private RequestQueue pRequestQueue;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_past_number);
+
+        progressDialog = new ProgressDialog(this);
+
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 //
@@ -56,9 +61,14 @@ public class PastNumberActivity extends AppCompatActivity {
         parsePowerJSon();
     }
 
-    private void parsePowerJSon(){
+    private void parsePowerJSon() {
 
         pRequestQueue = Volley.newRequestQueue(this);
+
+        progressDialog.setMax(100);
+        progressDialog.setTitle("Retrieving Lottery Numbers");
+        progressDialog.setMessage("Loading");
+        progressDialog.show();
 
         JsonArrayRequest pRequest = new JsonArrayRequest(Request.Method.GET, URL_POWER, null,
                 new Response.Listener<JSONArray>() {
@@ -66,7 +76,7 @@ public class PastNumberActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
 
                         try {
-                            for (int j = 0; j < response.length(); j++){
+                            for (int j = 0; j < response.length(); j++) {
                                 JSONObject pNumber = response.getJSONObject(j);
 
                                 String winningNumbers = pNumber.getString("winning_numbers");
@@ -74,17 +84,17 @@ public class PastNumberActivity extends AppCompatActivity {
 
                                 mPowerItems.add(new PowerItem(winningNumbers, drawDate));
 
-                                Log.d("PastNumberActivity", pNumber.getString("draw_date"));
-                                Log.d("PastNumberActivity", winningNumbers);
+                                //Log.d("PastNumberActivity", pNumber.getString("draw_date"));
+                                //Log.d("PastNumberActivity", winningNumbers);
                             }
                             mPowerAdapter = new PowerAdapter(PastNumberActivity.this, mPowerItems);
                             pRecyclerView.setAdapter(mPowerAdapter);
 
 
-                        }catch (JSONException e){
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
+                        progressDialog.dismiss();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -96,7 +106,7 @@ public class PastNumberActivity extends AppCompatActivity {
 
     }
 
-    private void parseMegaJSon(){
+    private void parseMegaJSon() {
 
         mRequestQueue = Volley.newRequestQueue(this);
 
@@ -106,7 +116,7 @@ public class PastNumberActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
 
                         try {
-                            for (int i = 0; i < response.length(); i++){
+                            for (int i = 0; i < response.length(); i++) {
                                 JSONObject number = response.getJSONObject(i);
 
                                 String winningNumbers = number.getString("winning_numbers").toString();
@@ -120,7 +130,7 @@ public class PastNumberActivity extends AppCompatActivity {
                             mRecyclerView.setAdapter(mMegaAdapter);
 
 
-                        }catch (JSONException e){
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
@@ -135,14 +145,14 @@ public class PastNumberActivity extends AppCompatActivity {
 
     }
 
-    private void buildRecyclerView(){
+    private void buildRecyclerView() {
 
         mRecyclerView = findViewById(R.id.recyclerViewMegaBall);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void buildPowerRecyclerView(){
+    private void buildPowerRecyclerView() {
         pRecyclerView = findViewById(R.id.recyclerViewPowerBall);
         pRecyclerView.setHasFixedSize(true);
         pRecyclerView.setLayoutManager(new LinearLayoutManager(this));

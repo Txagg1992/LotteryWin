@@ -3,6 +3,7 @@ package com.curiousca.lotterywin.data;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,9 @@ public class PowerAdapter extends RecyclerView.Adapter<PowerAdapter.PowerViewHol
 
         holder.mTextViewNumbers.setText(numbers);
         holder.mTextViewDrawDate.setText("Draw Date: " + newDate);
+
+        Log.i("powerAdapter", "Draw Date: " + newDate);
+
 
     }
 
