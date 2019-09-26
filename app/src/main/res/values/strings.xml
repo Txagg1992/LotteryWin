@@ -7,9 +7,12 @@
 
     <string name="logo">Logo</string>
     <string name="curiousaps_gmail_com">curiousaps@gmail.com</string>
-    <string name="version">Version 1.1.0\nRelease 10.26.18</string>
+    <string name="version">Version 1.2.1\nRelease 9.25.19</string>
     <string name="phone_number">903.372.0127</string>
     <string name="created">Created By Enoch for android</string>
     <string name="get_old_numbers">Get Past Numbers</string>
     <string name="title_activity_past_number">Past Numbers</string>
+    <string name="powerball_logo">PowerBall logo</string>
+    <string name="megamillions_logo">MegaMillions logo</string>
+    <string name="draw_date">Draw Date:</string>
 </resources>

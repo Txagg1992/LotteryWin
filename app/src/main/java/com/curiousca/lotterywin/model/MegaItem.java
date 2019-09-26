@@ -16,23 +16,12 @@ public class MegaItem {
         return mNumbers;
     }
 
-    public void setmNumbers(String mNumbers) {
-        this.mNumbers = mNumbers;
-    }
-
     public String getmMega() {
         return mMega;
-    }
-
-    public void setmMega(String mMega) {
-        this.mMega = mMega;
     }
 
     public String getmDrawDate() {
         return mDrawDate;
     }
 
-    public void setmDrawDate(String mDrawDate) {
-        this.mMega = mDrawDate;
-    }
 }

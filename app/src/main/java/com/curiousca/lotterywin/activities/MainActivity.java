@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         btnGetNumbers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("Clicked", "Button clicked");
+                //Log.i("Clicked", "Button clicked");
                 generateRandomNumbers();
                 generateAdditionalRandomNumbers();
             }
@@ -88,9 +87,8 @@ public class MainActivity extends AppCompatActivity {
         btnGetPastNumbers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("Clicked 2", "Past button clicked");
+                //Log.i("Clicked 2", "Past button clicked");
                 Intent intent = new Intent(MainActivity.this, PastNumberActivity.class);
-                //progressDialog.cancel();
                 startActivity(intent);
 
             }

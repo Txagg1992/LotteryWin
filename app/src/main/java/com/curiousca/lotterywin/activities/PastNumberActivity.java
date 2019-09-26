@@ -1,10 +1,11 @@
 package com.curiousca.lotterywin.activities;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,19 +39,15 @@ public class PastNumberActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
     private RequestQueue pRequestQueue;
 
-    private ProgressDialog progressDialog;
+    private int progressStatus = 0;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_past_number);
 
-        progressDialog = new ProgressDialog(this);
-
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        progressBar = findViewById(R.id.progress_horizontal);
 
         mMegaItems = new ArrayList<>();
         mPowerItems = new ArrayList<>();
@@ -65,45 +62,46 @@ public class PastNumberActivity extends AppCompatActivity {
 
         pRequestQueue = Volley.newRequestQueue(this);
 
-        progressDialog.setMax(100);
-        progressDialog.setTitle("Retrieving Lottery Numbers");
-        progressDialog.setMessage("Loading");
-        progressDialog.show();
+        progressStatus = 0;
+        while (progressStatus < 100) {
+            progressStatus += 1;
 
-        JsonArrayRequest pRequest = new JsonArrayRequest(Request.Method.GET, URL_POWER, null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
+            JsonArrayRequest pRequest = new JsonArrayRequest(Request.Method.GET, URL_POWER, null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
 
-                        try {
-                            for (int j = 0; j < response.length(); j++) {
-                                JSONObject pNumber = response.getJSONObject(j);
+                            try {
+                                for (int j = 0; j < response.length(); j++) {
+                                    JSONObject pNumber = response.getJSONObject(j);
 
-                                String winningNumbers = pNumber.getString("winning_numbers");
-                                String drawDate = pNumber.getString("draw_date");
+                                    String winningNumbers = pNumber.getString("winning_numbers");
+                                    String drawDate = pNumber.getString("draw_date");
 
-                                mPowerItems.add(new PowerItem(winningNumbers, drawDate));
+                                    mPowerItems.add(new PowerItem(winningNumbers, drawDate));
 
-                                //Log.d("PastNumberActivity", pNumber.getString("draw_date"));
-                                //Log.d("PastNumberActivity", winningNumbers);
+                                    //Log.d("PastNumberActivity", pNumber.getString("draw_date"));
+                                    //Log.d("PastNumberActivity", winningNumbers);
+                                }
+                                mPowerAdapter = new PowerAdapter(PastNumberActivity.this, mPowerItems);
+                                pRecyclerView.setAdapter(mPowerAdapter);
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            mPowerAdapter = new PowerAdapter(PastNumberActivity.this, mPowerItems);
-                            pRecyclerView.setAdapter(mPowerAdapter);
+                            progressBar.setProgress(progressStatus);
+                            progressBar.setVisibility(View.INVISIBLE);
 
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                        progressDialog.dismiss();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        pRequestQueue.add(pRequest);
-
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            pRequestQueue.add(pRequest);
+        }
     }
 
     private void parseMegaJSon() {

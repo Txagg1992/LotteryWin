@@ -3,7 +3,6 @@ package com.curiousca.lotterywin.data;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +57,7 @@ public class MegaAdapter extends RecyclerView.Adapter<MegaAdapter.MegaViewHolder
         holder.mTextViewMegaPower.setText(mega);
         holder.mTextViewDrawDate.setText("Draw Date: " + newDate);
 
-        Log.i("megaAdapter", "Draw Date: " + newDate);
+        //Log.i("megaAdapter", "Draw Date: " + newDate);
 
     }
 

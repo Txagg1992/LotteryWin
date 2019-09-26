@@ -13,7 +13,7 @@
             android:id="@+id/textViewDrawDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Draw Date:"
+            android:text="@string/draw_date"
             android:textSize="24sp"/>
         <LinearLayout
             android:layout_width="match_parent"
