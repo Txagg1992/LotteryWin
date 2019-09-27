@@ -63,7 +63,7 @@ public class PastNumberActivity extends AppCompatActivity {
         pRequestQueue = Volley.newRequestQueue(this);
 
         progressStatus = 0;
-        while (progressStatus < 100) {
+        while (progressStatus < 10) {
             progressStatus += 1;
 
             JsonArrayRequest pRequest = new JsonArrayRequest(Request.Method.GET, URL_POWER, null,

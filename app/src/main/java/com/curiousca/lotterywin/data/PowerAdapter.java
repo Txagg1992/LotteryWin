@@ -51,7 +51,7 @@ public class PowerAdapter extends RecyclerView.Adapter<PowerAdapter.PowerViewHol
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String newDate = new SimpleDateFormat("MMM dd, YYYY").format(date);
+        String newDate = new SimpleDateFormat("MMM dd, yyyy").format(date);
 
         holder.mTextViewNumbers.setText(numbers);
         holder.mTextViewDrawDate.setText("Draw Date: " + newDate);
