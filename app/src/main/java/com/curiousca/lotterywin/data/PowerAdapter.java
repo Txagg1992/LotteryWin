@@ -21,6 +21,10 @@ public class PowerAdapter extends RecyclerView.Adapter<PowerAdapter.PowerViewHol
     private Context mContext;
     private ArrayList<PowerItem> mPowerItemList;
 
+    private String template = "yyyy-MM-dd";
+    private String newTemplate = "MMM dd, yyy";
+
+
     public PowerAdapter(Context context, ArrayList<PowerItem> powerItemList){
 
         this.mContext = context;
@@ -43,22 +47,20 @@ public class PowerAdapter extends RecyclerView.Adapter<PowerAdapter.PowerViewHol
         String numbers  = currentItem.getpNumbers();
         String drawDate = currentItem.getpDrawDate();
 
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         Date date = null;
+        SimpleDateFormat sdf = new SimpleDateFormat(template);
+
         try {
             date = sdf.parse(drawDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String newDate = new SimpleDateFormat("MMM dd, yyyy").format(date);
+        String newDate = new SimpleDateFormat(newTemplate).format(date);
 
         holder.mTextViewNumbers.setText(numbers);
         holder.mTextViewDrawDate.setText("Draw Date: " + newDate);
 
         //Log.i("powerAdapter", "Draw Date: " + newDate);
-
-
     }
 
     @Override

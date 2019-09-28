@@ -21,6 +21,11 @@ public class MegaAdapter extends RecyclerView.Adapter<MegaAdapter.MegaViewHolder
     private Context mContext;
     private ArrayList<MegaItem> mMegaItemList;
 
+    private String template = "yyyy-MM-dd";
+    private String newTemplate = "MMM dd, yyy";
+
+
+
     public MegaAdapter(Context context, ArrayList<MegaItem> megaItemList){
 
         this.mContext = context;
@@ -44,21 +49,21 @@ public class MegaAdapter extends RecyclerView.Adapter<MegaAdapter.MegaViewHolder
         String mega  = currentItem.getmMega();
         String drawDate = currentItem.getmDrawDate();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
+        SimpleDateFormat sdf = new SimpleDateFormat(template);
+
         try {
             date = sdf.parse(drawDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String newDate = new SimpleDateFormat("MMM dd, YYYY").format(date);
+        String newDate = new SimpleDateFormat(newTemplate).format(date);
 
         holder.mTextViewNumbers.setText(numbers);
         holder.mTextViewMegaPower.setText(mega);
         holder.mTextViewDrawDate.setText("Draw Date: " + newDate);
 
         //Log.i("megaAdapter", "Draw Date: " + newDate);
-
     }
 
     @Override
@@ -66,13 +71,13 @@ public class MegaAdapter extends RecyclerView.Adapter<MegaAdapter.MegaViewHolder
         return mMegaItemList.size();
     }
 
-    public class MegaViewHolder extends RecyclerView.ViewHolder {
+    class MegaViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mTextViewNumbers;
-        public TextView mTextViewMegaPower;
-        public TextView mTextViewDrawDate;
+        TextView mTextViewNumbers;
+        TextView mTextViewMegaPower;
+        TextView mTextViewDrawDate;
 
-        public MegaViewHolder(@NonNull View itemView) {
+        MegaViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mTextViewNumbers = itemView.findViewById(R.id.textView_numbers);
