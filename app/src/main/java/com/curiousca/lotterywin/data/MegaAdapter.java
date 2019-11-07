@@ -51,7 +51,7 @@ public class MegaAdapter extends RecyclerView.Adapter<MegaAdapter.MegaViewHolder
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String newDate = new SimpleDateFormat("MMM dd, YYYY").format(date);
+        String newDate = new SimpleDateFormat("MMM dd, yyy").format(date);
 
         holder.mTextViewNumbers.setText(numbers);
         holder.mTextViewMegaPower.setText(mega);
